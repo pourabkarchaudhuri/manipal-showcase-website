@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+	<link rel="manifest" href="/manifest.json">
+  <title>TAU</title>
+  <link rel="shortcut icon" href="avatar/blank.ico" />
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+
+  <!--Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Propeller css -->
+  <link href="style/propeller.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style/style.css">
+
+  <!--Animate css -->
+  <link rel="stylesheet" href="style/animate.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<div id="fundModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Discount Chart</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="col-md-12 fund-details">
+            <object type="application/pdf" data="ChatBot.pdf" width="100%" height="500" style="height: 85vh;">No Support</object>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container-fluid main-container no-scroll-x">
+
+    <div class="row header-popup">
+      <div class="pmd-card pmd-z-depth card-custom-view showheader" style="margin-bottom: 4px;">
+        <div class="pmd-card-body" style="margin:0px;">
+          <div class="table custom-size" style="margin:0px;">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="height: 77%;">
+      <div class="chat-body" id="style-3" style="height: 580px !important"><!--removed pmd-z-depth-->
+        <div class="chat-text-para col-xs-offset-4 col-xs-4 chat-welcome-message"><img class="welcome-message-big"/></div>
+        <h1 class="pmd-display3 hidden col-xs-12 welcome-message">Hello, I'm AI</h1>
+        <h1 class="pmd-display3 hidden col-xs-12 welcome-message-textWel">How can I help you today?<br>Enter your question below and I'll help you<br>find the information you need.</h1>
+
+
+        <div class="header-text-logo hidden" style="display:none; background-color: #0097d6;height: 80px; width:390px !important;padding-top: 5px; border-bottom:2px solid rgba(204, 204, 204, 0.59); position: fixed; z-index: 20000; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+          <div class="col-xs-3" style="padding-top: 13px;width: 16% !important;">
+            <img src="./avatar/Macybig.svg" class="img-responsive" style="border-radius: 50%; padding-top: 0%; max-width: 48px;">
+          </div>
+          <div class="col-xs-6" style="font-size: 14pt;font-family: Roboto;color: #FFF;padding-left: 0px !important;padding-top: 10px !important; margin-left: 0px !important;">Hello, I'm TAU!<br><div style="font-size: 11pt;font-weight: 300;font-family: Roboto;color: #FFF;padding-left: 0px !important;/* padding-top: 0px !important; */">How can I help you today ?</div>
+          </div>
+        </div>
+
+
+        <ul id="msg_container" class="list-group pmd-list pmd-card-list hidden background-color-custom" style="margin-top: 82px;"></ul>
+
+      </div>
+    </div>
+
+
+
+    <div class="row"style="height: 90px !important; width:px ! important">
+      <div class="col-xs-12" style="margin-top: 4px; height: 90px !important;">
+        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+          <div class="input-group">
+
+            <label class="control-label">Write your message here</label>
+            <textarea style="height:auto;resize: none;" rows="2" id="btn-input" required class="form-control" maxlength="250"></textarea>
+            <div class="input-group-addon">
+              <button style="margin-left: 0px; width: 26px; min-width: 10px" data-container="body" data-trigger="click" data-toggle="popover" data-placement="top" data-content="<h1 class='popup-msgbox' style='cursor:pointer;padding:0;margin:0'><span onclick='showmesgtext(this);return false;'  class='laughter' style='margin-right:3px;'>&#128516;</span><span  onclick='showmesgtext(this);return false;' class='winking'  style='margin-right:3px;'>&#128521;</span><span onclick='showmesgtext(this);return false;' class='delicious'  style='margin-right:3px;'>&#128523;</span><span onclick='showmesgtext(this);return false;' class='heart-shaped' style='margin-right:3px;' >&#128525;</span><span onclick='showmesgtext(this);return false;' style='margin-right:3px;' class='crying'>&#128546;</span><span onclick='showmesgtext(this);return false;' style='margin-right:3px;' class='angry'>&#128544;</span></h1>"
+                  data-html="true" class="emoji-message btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-primary" type="button" id="emojiPicker">
+                          <img src="/images/smiliy.png" width="24" height="24">
+                </button>
+            </div>
+            <div class="input-group-addon">
+
+              <div class="menu" role="navigation">
+                <a id="btn-send-message" class="pmd-floating-action-btn btn btn-sm pmd-btn-fab" href="#"><!--removed pmd-btn-raised pmd-ripple-effect-->
+                              <span class="pmd-floating-hidden">Primary</span>
+                              <img src="/images/Send.svg" width="40" height="40">
+                            </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" style="height: 90px !important; width:390px !important" >
+        <div class="col-xs-12" style="font-size: x-small;color: darkgray;">
+         <span><p style="margin-left:10px;">© Powered by Pourab</p></span>
+        </div>
+
+
+
+
+        <div tabindex="-1" class="modal fade" id="center-dialog" style="display: none;" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content" style="border-radius:10px">
+              <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+
+                <div class="pmd-modal-media"> <img id="modal-img-holder" width="1184" height="666" class="img-responsive" src="http://propeller.in/assets/images/profile-pic.png">
+                </div>
+
+                <div class="pmd-modal-action" style="position: relative;text-align: right;">
+                  <a download="invoice_example.jpg" target="_blank" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-primary"
+                    id="modal-btndownload"> <i class="material-icons pmd-sm">file_download</i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <script data-main="js/require-setup" src="require.js"></script>
+<!-- <script src="/js/config"></script> -->
+    <script>
+      function bindJS() {
+        $('.chat-body').css('height', (window.innerHeight - 140) + 'px')
+        $('.main-container').css('opacity', '1');
+        //hide emoji popover on outside click
+        $(document).on('click', function (e) {
+          $('[data-toggle="popover"]').each(function () {
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+              if ($("#" + $(this).attr("aria-describedby") + ":visible").length) {
+                $(this).trigger('click')
+              }
+            }
+          });
+        });
+
+        //triggered when modal is about to be shown
+        $('#center-dialog').on('show.bs.modal', function (e) {
+          $('#modal-img-holder').attr('src', $(e.relatedTarget).data('src'));
+          $('#modal-btndownload').attr('href', $(e.relatedTarget).data('src'));
+
+        });
+        function checkSRC()
+          {
+            var elem = document.getElementById('img1');
+            alert("fileupload");
+            if(elem.getAttribute('src') == "")
+            {
+              alert("empty");
+            }
+            else
+            {
+              alert("HAS a value");
+            }
+          }
+
+        document.getElementById("btn-input").focus();
+
+
+        $(document.body).ready(function () {
+          var isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+          if (isMobile) {
+            $("html").addClass("mobile-device");
+          } else {
+            $("html").addClass("desktop-device");
+          }
+
+
+
+        });
+      }
+      require(['lib/jquery.min'], function () {
+        require(['lib/bootstrap.min'], function () {
+          require(['lib/propeller'], function () {
+            bindJS()
+          });
+        });
+      });
+    </script>
+
+</body>
+<script type="text/javascript" src="https://lpcdn.lpsnmedia.net/api/chat/public/lpChat.min.js"></script>
+
+</html>
